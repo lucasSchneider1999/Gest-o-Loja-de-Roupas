@@ -25,12 +25,17 @@ public class VendaService {
 		return "Venda nao encontrada";
 	}
 	
-	public List<Venda> listAll(Venda venda) {
+	public List<Venda> listAll() {
 		return this.vendaRepository.findAll();
 	}
 	
 	public Venda findById(long idVenda) {
 		Venda venda = this.vendaRepository.findById(idVenda).get();
 		return venda;
+	}
+	
+	public String delete(long idVenda) {
+		this.vendaRepository.deleteById(idVenda);
+		return "Venda nao encontrada";
 	}
 }

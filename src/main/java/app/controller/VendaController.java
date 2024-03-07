@@ -42,7 +42,7 @@ public class VendaController {
 	}
 	
 	@PutMapping("/update/{id}")
-	public ResponseEntity<String> update(@RequestBody Venda venda, @PathVariable long idVenda) {
+	public ResponseEntity<String> update(@RequestBody Venda venda, @PathVariable int idVenda) {
 		
 		try {
 			
