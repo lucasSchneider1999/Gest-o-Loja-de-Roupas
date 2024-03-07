@@ -39,8 +39,8 @@ public class ClienteService {
 		
 	}
 	
-	public String delete (long idAutor) {
-		this.clienteRepository.deleteById(idAutor);
+	public String delete (long idCliente) {
+		this.clienteRepository.deleteById(idCliente);
 		return "Cliente deletado";
 	}
 	
