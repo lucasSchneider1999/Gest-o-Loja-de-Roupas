@@ -28,7 +28,7 @@ public class Venda {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idVenda;
 	private String enderecoVenda;
-	private int valorVenda;
+	private double valorVenda;
 	
 	@ManyToOne (cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("venda")
