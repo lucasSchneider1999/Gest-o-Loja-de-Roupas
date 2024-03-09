@@ -16,13 +16,13 @@ public class VendaService {
 	
 	public String save(Venda venda) {
 		this.vendaRepository.save(venda);
-		return venda.getValorVenda() +"Pedido realizado com sucesso";
+		return venda.getValorVenda() +" Pedido realizado com sucesso";
 	}
 	
 	public String update(long idVenda, Venda venda) {
 		venda.setIdVenda(idVenda);
 		this.vendaRepository.save(venda);
-		return "Venda nao encontrada";
+		return " Venda Alterada com sucesso";
 	}
 	
 	public List<Venda> listAll() {
@@ -36,6 +36,6 @@ public class VendaService {
 	
 	public String delete(long idVenda) {
 		this.vendaRepository.deleteById(idVenda);
-		return "Venda nao encontrada";
+		return " Venda deletada com sucesso";
 	}
 }

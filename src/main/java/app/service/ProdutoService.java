@@ -16,7 +16,7 @@ public class ProdutoService {
 	
 	public String save(Produto produto) {
 		this.produtoRepository.save(produto);
-		return produto.getNomeProduto()+ " Salvo com sucesso";
+		return produto.getNomeProduto()+ " Produto salvo com sucesso";
 	}
 	
 	public String update(long idProduto, Produto produto) {
