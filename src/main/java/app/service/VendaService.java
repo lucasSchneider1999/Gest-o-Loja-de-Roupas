@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import app.entity.Funcionario;
 import app.entity.Venda;
 import app.repository.VendaRepository;
 
@@ -37,5 +38,24 @@ public class VendaService {
 	public String delete(long idVenda) {
 		this.vendaRepository.deleteById(idVenda);
 		return " Venda deletada com sucesso";
+	}
+	
+	public List<Venda> buscarVendasAcimaValor(double valorVenda){
+		return this.vendaRepository.buscarVendasAcimaValor(valorVenda);
+	}
+	
+	public List<Venda> findByFuncionarioMatricula(String matricula){
+		return this.vendaRepository.findByFuncionarioMatricula(matricula);
+	}
+	
+	public List<Venda> findByClienteNome(String nome){
+		return this.vendaRepository.findByClienteNome(nome);
+	}
+
+	
+	public List<Venda> findByFuncionario(long idFuncionario){
+		Funcionario funcionario = new Funcionario();
+		funcionario.setIdFuncionario(idFuncionario);
+		return this.vendaRepository.findByFuncionario(funcionario);
 	}
 }
