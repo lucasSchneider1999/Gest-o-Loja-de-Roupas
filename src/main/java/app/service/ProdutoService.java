@@ -40,21 +40,27 @@ public class ProdutoService {
 	}
 	
 	//consulta BD
-	public List<Produto> findByProduto(long idProduto){
+
+	
+
+	public List<Produto> findByIdProduto(long idProduto){
 		Produto produto = new Produto();
 		produto.setIdProduto(idProduto);
-		return this.produtoRepository.findByProduto(produto);
+		return this.produtoRepository.findByIdProduto(idProduto);
 	}
+	
+	
 	
 	public List<Produto> findByNome(String nomeProduto){
-		return this.produtoRepository.findByNome(nomeProduto);
+		return this.produtoRepository.findByNomeProduto(nomeProduto);
 	}
 	
-	public List<Produto> findByFirstnameStartingWith(String nomeProduto){
-		return this.produtoRepository.findByFirstnameStartingWith(nomeProduto);
+	public List<Produto> findByPrimeiroNome(String nomeProduto){
+		return this.produtoRepository.findByNomeProdutoStartingWith(nomeProduto);
 	}
 	
 	public List<Produto> buscarProdutosAcimaValor(double valorProduto){
 		return this.produtoRepository.buscarProdutosAcimaValor(valorProduto);
 	}
+	
 }
