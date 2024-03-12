@@ -40,6 +40,7 @@ public class VendaService {
 		return " Venda deletada com sucesso";
 	}
 	
+	//Consultas BD
 	public List<Venda> buscarVendasAcimaValor(double valorVenda){
 		return this.vendaRepository.buscarVendasAcimaValor(valorVenda);
 	}
@@ -58,4 +59,5 @@ public class VendaService {
 		funcionario.setIdFuncionario(idFuncionario);
 		return this.vendaRepository.findByFuncionario(funcionario);
 	}
+	
 }

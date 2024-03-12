@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import app.entity.Produto;
@@ -79,5 +80,62 @@ public class ProdutoController {
 			return new ResponseEntity<String>("Erro: "+e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 	}
+	
+	//consultas BD
+	@GetMapping("/findByProduto")
+	public ResponseEntity<List<Produto>> findByProduto (@RequestParam long idProduto){
+		
+		try {
+			
+			List<Produto> lista = this.produtoService.findByProduto(idProduto);
+			return new ResponseEntity<>(lista, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+
+		}
+		
+	}
+	
+	@GetMapping("/findByNome")
+	public ResponseEntity<List<Produto>> findByNome (@RequestParam String nomeProduto){
+		
+		try {
+			List<Produto> lista = this.produtoService.findByNome(nomeProduto);
+			return new ResponseEntity<>(lista, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
+			
+	}
+	
+	@GetMapping("/findByFirstnameStartingWith")
+	public ResponseEntity<List<Produto>> findByFirstnameStartingWith (@RequestParam String nomeProduto){
+		
+		try {
+			List<Produto> lista = this.produtoService.findByFirstnameStartingWith(nomeProduto);
+			return new ResponseEntity<>(lista, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
+			
+	}
+	
+	@GetMapping("/buscarProdutosAcimaValor")
+	public ResponseEntity<List<Produto>> buscarProdutosAcimaValor(@RequestParam double valorProduto) {
+
+		try {
+			List<Produto> lista = this.produtoService.buscarProdutosAcimaValor(valorProduto);
+			return new ResponseEntity<>(lista, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
 	
 }
