@@ -44,4 +44,22 @@ public class ClienteService {
 		return "Cliente deletado";
 	}
 	
+	//consulta DB
+	
+	public List<Cliente> findByNome(String nome){
+		return this.clienteRepository.findByNome(nome);
+	}
+	
+	public List<Cliente> findByCpf(String cpf){
+		return this.clienteRepository.findByCpf(cpf);
+	}
+	
+	public List<Cliente> findByNomeStartingWith(String nome){
+		return this.clienteRepository.findByNomeStartingWith(nome);
+	}
+	
+	public List<Cliente> buscarClienteIdade(int idade){
+		return this.clienteRepository.buscarClienteIdade(idade);
+	}
+	
 }
