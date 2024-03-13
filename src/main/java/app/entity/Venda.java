@@ -29,6 +29,7 @@ public class Venda {
 	private long idVenda;
 	private String enderecoVenda;
 	private double valorVenda;
+	private double valorFinal;
 	
 	@ManyToOne (cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("venda")

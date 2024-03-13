@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import app.entity.Funcionario;
+import app.entity.Produto;
 import app.entity.Venda;
 import app.repository.VendaRepository;
 
@@ -17,7 +18,13 @@ public class VendaService {
 	
 	public String save(Venda venda) {
 		this.vendaRepository.save(venda);
-		return venda.getValorVenda() +" Pedido realizado com sucesso";
+		List <Produto> produtos = venda.getProduto();
+		double valorFinal = 0;
+		for (Produto produto : produtos) {
+			valorFinal += produto.getValorProduto();
+		}
+		venda.setValorVenda(valorFinal);
+		return venda.getValorFinal() +" Pedido realizado com sucesso";
 	}
 	
 	public String update(long idVenda, Venda venda) {
