@@ -15,6 +15,10 @@ public class VendaService {
 	
 	@Autowired
 	private VendaRepository vendaRepository;
+	private Venda venda;
+	
+
+		
 	
 	public String save(Venda venda) {
 		this.vendaRepository.save(venda);
@@ -23,8 +27,10 @@ public class VendaService {
 		for (Produto produto : produtos) {
 			valorFinal += produto.getValorProduto();
 		}
-		venda.setValorVenda(valorFinal);
-		return venda.getValorFinal() +" Pedido realizado com sucesso";
+		venda.setValorFinal(valorFinal);
+		vendaRepository.save(venda);
+		return valorFinal +" Pedido realizado com sucesso";
+
 	}
 	
 	public String update(long idVenda, Venda venda) {
