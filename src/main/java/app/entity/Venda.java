@@ -19,26 +19,34 @@ import lombok.Setter;
 
 @Getter
 @Setter
+//anotação usada para gerar automaticamente um construtor sem argumentos para uma classe
 @NoArgsConstructor
+//anotação é usada para gerar automaticamente um construtor que aceita todos os campos da classe como argumentos
 @AllArgsConstructor
 @Entity
 public class Venda {
-
+	
+	/* 
+	anotacao que define idVenda como um id no DB e a generated value para definir o mesmo como 
+	auto increment
+	*/
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idVenda;
 	private String enderecoVenda;
 	private double valorVenda;
-	private double valorFinal;
 	
+	//Relacao de muitas vendas para um funcionario 
 	@ManyToOne (cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("venda")
 	private Funcionario funcionario;
 	
+	//Relacao de muitas vendas para um cliente 
 	@ManyToOne (cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("venda")
 	private Cliente cliente;
 	
+	//relacao de muitos para muitos de vendas para produtos
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable (name =  "venda_produto")
 	private List<Produto> produto;

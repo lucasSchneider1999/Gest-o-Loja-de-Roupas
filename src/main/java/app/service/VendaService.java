@@ -1,11 +1,11 @@
 package app.service;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import app.entity.Funcionario;
 import app.entity.Produto;
 import app.entity.Venda;
 import app.repository.VendaRepository;
@@ -13,23 +13,26 @@ import app.repository.VendaRepository;
 @Service
 public class VendaService {
 	
+	//uma anotacao para gerar uma instancia de um objeto de maneira automatica
 	@Autowired
 	private VendaRepository vendaRepository;
-	private Venda venda;
 	
-
-		
+	//metodos CRUD
 	
 	public String save(Venda venda) {
 		this.vendaRepository.save(venda);
 		List <Produto> produtos = venda.getProduto();
-		double valorFinal = 0;
+		//classe para limitar as casas decimais do valor final da venda
+		DecimalFormat df = new DecimalFormat("#.##");
+		double valorVenda = 0;
 		for (Produto produto : produtos) {
-			valorFinal += produto.getValorProduto();
+			valorVenda += produto.getValorProduto();
 		}
-		venda.setValorFinal(valorFinal);
+		//string para receber o valor final ja formatado 
+		String valorFormatado = df.format(valorVenda);
+		venda.setValorVenda(valorVenda);
 		vendaRepository.save(venda);
-		return valorFinal +" Pedido realizado com sucesso";
+		return valorFormatado +" Pedido realizado com sucesso";
 
 	}
 	
@@ -53,7 +56,8 @@ public class VendaService {
 		return " Venda deletada com sucesso";
 	}
 	
-	//Consultas BD
+	//Consultas DB
+	
 	public List<Venda> buscarVendasAcimaValor(double valorVenda){
 		return this.vendaRepository.buscarVendasAcimaValor(valorVenda);
 	}

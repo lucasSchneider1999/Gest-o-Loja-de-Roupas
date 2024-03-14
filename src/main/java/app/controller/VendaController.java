@@ -91,7 +91,7 @@ public class VendaController {
 		
 	}
 	
-	//consultas BD
+	//consultas DB
 	
 	@GetMapping("/findByFuncionarioMatricula")
 	public ResponseEntity<List<Venda>> findByFuncionarioMatricula (@RequestParam String matricula){

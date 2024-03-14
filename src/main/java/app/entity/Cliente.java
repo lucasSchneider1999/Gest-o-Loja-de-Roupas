@@ -27,6 +27,7 @@ public class Cliente {
 	int idade;
 	String telefone;
 	
+	//relacao de um cliente para muitas vendas
 	@OneToMany(mappedBy = "cliente")
 	private List<Venda> venda;
 }

@@ -28,6 +28,7 @@ public class Funcionario {
 	private int idade;
 	private String matricula;
 	
+	//relacao de um funcionario para muitas vendas
 	@OneToMany(mappedBy = "funcionario")
 	private List<Venda> venda;
 }
