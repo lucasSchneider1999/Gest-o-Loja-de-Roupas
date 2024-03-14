@@ -41,16 +41,6 @@ public class ProdutoService {
 	
 	//consulta BD
 
-	
-
-	public List<Produto> findByIdProduto(long idProduto){
-		Produto produto = new Produto();
-		produto.setIdProduto(idProduto);
-		return this.produtoRepository.findByIdProduto(idProduto);
-	}
-	
-	
-	
 	public List<Produto> findByNome(String nomeProduto){
 		return this.produtoRepository.findByNomeProduto(nomeProduto);
 	}

@@ -66,11 +66,4 @@ public class VendaService {
 		return this.vendaRepository.findByClienteNome(nome);
 	}
 
-	
-	public List<Venda> findByFuncionario(long idFuncionario){
-		Funcionario funcionario = new Funcionario();
-		funcionario.setIdFuncionario(idFuncionario);
-		return this.vendaRepository.findByFuncionario(funcionario);
-	}
-	
 }
