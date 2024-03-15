@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import app.entity.Funcionario;
 import app.entity.Produto;
 import app.entity.Venda;
 import app.repository.VendaRepository;
@@ -20,7 +21,7 @@ public class VendaService {
 	//metodos CRUD
 	
 	public String save(Venda venda) {
-		this.vendaRepository.save(venda);
+		//this.vendaRepository.save(venda);
 		List <Produto> produtos = venda.getProduto();
 		//classe para limitar as casas decimais do valor final da venda
 		DecimalFormat df = new DecimalFormat("#.##");
@@ -31,7 +32,7 @@ public class VendaService {
 		//string para receber o valor final ja formatado 
 		String valorFormatado = df.format(valorVenda);
 		venda.setValorVenda(valorVenda);
-		vendaRepository.save(venda);
+		this.vendaRepository.save(venda);
 		return valorFormatado +" Pedido realizado com sucesso";
 
 	}
@@ -57,6 +58,13 @@ public class VendaService {
 	}
 	
 	//Consultas DB
+	
+	public List<Venda> findByFuncionario(long idFuncionario){
+        Funcionario funcionario = new Funcionario();
+        funcionario.setIdFuncionario(idFuncionario);
+        return this.vendaRepository.findByFuncionario(funcionario);
+    }
+
 	
 	public List<Venda> buscarVendasAcimaValor(double valorVenda){
 		return this.vendaRepository.buscarVendasAcimaValor(valorVenda);
