@@ -13,10 +13,6 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
-<<<<<<< HEAD
-=======
-import jakarta.validation.constraints.NotNull;
->>>>>>> 3178e00e32d186a553d11b7b8faeaf1a86710221
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,12 +36,9 @@ public class Venda {
 	private long idVenda;
 	private String enderecoVenda;
 	private double valorVenda;
-<<<<<<< HEAD
 	private double valorFinal;
 	@NotBlank
 	private String status;
-=======
->>>>>>> 3178e00e32d186a553d11b7b8faeaf1a86710221
 	
 	//Relacao de muitas vendas para um funcionario 
 	@ManyToOne (cascade = CascadeType.ALL)
