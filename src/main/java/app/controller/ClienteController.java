@@ -29,8 +29,10 @@ public class ClienteController {
 	public ResponseEntity<String> save(@RequestBody Cliente cliente){
 
 		try {
+			
 			String mensagem = this.clienteService.save(cliente);
-			return new ResponseEntity<>(mensagem,HttpStatus.OK);		
+			return new ResponseEntity<>(mensagem,HttpStatus.OK);	
+			
 		} catch (Exception e) {
 
 			return new ResponseEntity<>(null,HttpStatus.BAD_GATEWAY);		
