@@ -91,7 +91,23 @@ public class VendaController {
 		
 	}
 	
-	//consultas BD
+	//consultas DB
+	
+	@GetMapping("/findByFuncionario")
+    public ResponseEntity<List<Venda>> findByFuncionario (@RequestParam long idFuncionario){
+
+        try {
+
+            List<Venda> lista = this.vendaService.findByFuncionario(idFuncionario);
+            return new ResponseEntity<>(lista, HttpStatus.OK);
+
+        } catch (Exception e) {
+
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+
+        }
+
+    }
 	
 	@GetMapping("/findByFuncionarioMatricula")
 	public ResponseEntity<List<Venda>> findByFuncionarioMatricula (@RequestParam String matricula){
@@ -131,22 +147,6 @@ public class VendaController {
 		try {
 			
 			List<Venda> lista = this.vendaService.buscarVendasAcimaValor(valorVenda);
-			return new ResponseEntity<>(lista, HttpStatus.OK);
-			
-		} catch (Exception e) {
-			
-			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-
-		}
-		
-	}
-	
-	@GetMapping("/findByFuncionario")
-	public ResponseEntity<List<Venda>> findByFuncionario (@RequestParam long idFuncionario){
-		
-		try {
-			
-			List<Venda> lista = this.vendaService.findByFuncionario(idFuncionario);
 			return new ResponseEntity<>(lista, HttpStatus.OK);
 			
 		} catch (Exception e) {

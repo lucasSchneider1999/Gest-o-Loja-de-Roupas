@@ -121,18 +121,6 @@ public class FuncionarioControlller {
 		}
 	}
 	
-	@GetMapping("/findByIdFuncionario")
-	public ResponseEntity<List<Funcionario>> findByIdFuncionario(@RequestParam long idFuncionario){
-		
-		try {
-			List<Funcionario> lista = this.funcionarioService.findByIdFuncionario(idFuncionario);
-			return new ResponseEntity<>(lista, HttpStatus.OK);
-		} catch (Exception e) {
-			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-		}
-		
-	}
-	
 	@GetMapping("/buscarIdadeAcima")
 	public ResponseEntity<List<Funcionario>> buscarIdadeAcima(@RequestParam int idade) {
 

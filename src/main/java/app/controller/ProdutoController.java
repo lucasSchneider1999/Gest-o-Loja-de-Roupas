@@ -82,23 +82,6 @@ public class ProdutoController {
 	}
 	
 	//consultas BD
-	@GetMapping("/findByIdProduto")
-	
-	public ResponseEntity<List<Produto>> findByIdProduto(@RequestParam long idProduto){
-		
-		try {
-			
-			List<Produto> lista = this.produtoService.findByIdProduto(idProduto);
-			return new ResponseEntity<>(lista, HttpStatus.OK);
-			
-		} catch (Exception e) {
-			
-			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-
-		}
-		
-	}
-	
 	
 	@GetMapping("/findByNome")
 	public ResponseEntity<List<Produto>> findByNome (@RequestParam String nomeProduto){

@@ -55,13 +55,7 @@ public class FuncionarioService {
 	public List<Funcionario> findByNome(String nome){
 		return this.funcionarioRepository.findByNome(nome);
 	}
-	
-	public List<Funcionario> findByIdFuncionario(long idFuncionario){
-		Funcionario funcionario = new Funcionario();
-		funcionario.setIdFuncionario(idFuncionario);
-		return this.funcionarioRepository.findByIdFuncionario(idFuncionario);
-	}
-	
+		
 	public List<Funcionario> buscarIdadeAcima(int idade){
 		return this.funcionarioRepository.buscarIdadeAcima(idade);
 	}

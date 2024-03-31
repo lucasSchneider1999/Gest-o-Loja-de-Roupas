@@ -1,5 +1,6 @@
 package app.service;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +14,16 @@ import jakarta.validation.Valid;
 
 @Service
 public class VendaService {
+<<<<<<< HEAD
 
+=======
+	
+	//uma anotacao para gerar uma instancia de um objeto de maneira automatica
+>>>>>>> 3178e00e32d186a553d11b7b8faeaf1a86710221
 	@Autowired
 	private VendaRepository vendaRepository;
-	private Venda venda;
 	
+<<<<<<< HEAD
 	
 	//metodo de soma valorFinal
 	public double valorFinal (@Valid List <Produto> produtos) {
@@ -29,6 +35,25 @@ public class VendaService {
 			valorFinal += produto.getValorProduto();
 		}
 		return valorFinal;
+=======
+	//metodos CRUD
+	
+	public String save(Venda venda) {
+		//this.vendaRepository.save(venda);
+		List <Produto> produtos = venda.getProduto();
+		//classe para limitar as casas decimais do valor final da venda
+		DecimalFormat df = new DecimalFormat("#.##");
+		double valorVenda = 0;
+		for (Produto produto : produtos) {
+			valorVenda += produto.getValorProduto();
+		}
+		//string para receber o valor final ja formatado 
+		String valorFormatado = df.format(valorVenda);
+		venda.setValorVenda(valorVenda);
+		this.vendaRepository.save(venda);
+		return valorFormatado +" Pedido realizado com sucesso";
+
+>>>>>>> 3178e00e32d186a553d11b7b8faeaf1a86710221
 	}
 
 
@@ -65,8 +90,21 @@ public class VendaService {
 		this.vendaRepository.deleteById(idVenda);
 		return " Venda deletada com sucesso";
 	}
+<<<<<<< HEAD
 
 	//Consultas BD
+=======
+	
+	//Consultas DB
+	
+	public List<Venda> findByFuncionario(long idFuncionario){
+        Funcionario funcionario = new Funcionario();
+        funcionario.setIdFuncionario(idFuncionario);
+        return this.vendaRepository.findByFuncionario(funcionario);
+    }
+
+	
+>>>>>>> 3178e00e32d186a553d11b7b8faeaf1a86710221
 	public List<Venda> buscarVendasAcimaValor(double valorVenda){
 		return this.vendaRepository.buscarVendasAcimaValor(valorVenda);
 	}
@@ -79,6 +117,7 @@ public class VendaService {
 		return this.vendaRepository.findByClienteNome(nome);
 	}
 
+<<<<<<< HEAD
 
 	public List<Venda> findByFuncionario(long idFuncionario){
 		Funcionario funcionario = new Funcionario();
@@ -97,4 +136,6 @@ public class VendaService {
 	}
 	
 
+=======
+>>>>>>> 3178e00e32d186a553d11b7b8faeaf1a86710221
 }
