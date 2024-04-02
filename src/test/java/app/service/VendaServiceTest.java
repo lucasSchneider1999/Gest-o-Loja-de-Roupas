@@ -76,12 +76,8 @@ public class VendaServiceTest {
 	@DisplayName("Teste Unitario Metodo verificarStatus com exception")
 	void cenario2Status () {
 
-			Venda venda = new Venda();
-			venda.setValorFinal(100);
-			venda.setStatus("Cancelado");
+			
 
-
-		System.out.println(venda.getValorFinal());
 		assertThrows(Exception.class, () -> {
 			vendaService.valorFinal(null);
 			
