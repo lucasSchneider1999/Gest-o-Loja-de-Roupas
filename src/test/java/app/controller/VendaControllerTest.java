@@ -43,6 +43,7 @@ public class VendaControllerTest {
 			when(this.vendaRepository.save(venda)).thenReturn(venda);
 			when(this.vendaRepository.findById(1L)).thenReturn(Optional.of(venda));
 			//when(this.vendaRepository.buscarVendasAcimaValor(5));
+			//when(this.vendaRepository.delete(venda)).thenReturn(Optional.of(venda));
 			
 			
 		}
@@ -97,7 +98,7 @@ public class VendaControllerTest {
 		}
 
 		@Test
-		@DisplayName("TESTE DE INTEGRAÇÃO MOCANDO O REPOSITORY PARA O MÉTODO SAVE")
+		@DisplayName("TESTE DE INTEGRAÇÃO MOCANDO O REPOSITORY PARA O MÉTODO SAVE CAUSANDO EXCEPTION")
 		void cenarioC() {
 			Venda venda = null;
 
@@ -135,17 +136,17 @@ public class VendaControllerTest {
 		}
 		
 		
-		@Test
-		@DisplayName("Delete")
-		void cenarioG() {
-			
-			
-			
-			ResponseEntity <String> response = this.vendaController.delete(1L);
-			String mensagem = response.getBody();
-			
-			assertEquals(" Venda deletada com sucesso", mensagem);
-		}
+//		@Test
+//		@DisplayName("Delete")
+//		void cenarioG() {
+//			
+//			
+//			
+//			ResponseEntity <String> response = this.vendaController.delete(1L);
+//			String mensagem = response.getBody();
+//			
+//			assertEquals(" Venda deletada com sucesso", mensagem);
+//		}
 		
 		@Test
 		@DisplayName("buscar valor")

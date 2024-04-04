@@ -72,6 +72,16 @@ public class VendaServiceTest {
 
 	}
 	
+	@Test 
+	@DisplayName("UPDATE")
+	void cenario7(){
+		Venda venda = new Venda(1, "asdasd", 3.55, 2.44, "Cancelado", null, null, null);
+		String response = this.vendaService.update(1, venda);
+		
+		
+		assertEquals(" Venda Alterada com sucesso", response);
+	}
+	
 	
     }
 	
