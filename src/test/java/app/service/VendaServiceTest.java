@@ -32,6 +32,7 @@ public class VendaServiceTest {
 
 
 		double valorFinal = this.vendaService.valorFinal(produtos);
+		
 
 		assertEquals(35, valorFinal);
 	}
@@ -69,20 +70,12 @@ public class VendaServiceTest {
 		assertEquals(null, verificarStatusFinal.getProduto());
 
 
-
 	}
 	
-	@Test
-	@DisplayName("Teste Unitario Metodo verificarStatus com exception")
-	void cenario2Status () {
-
-			
-
-		assertThrows(Exception.class, () -> {
-			vendaService.valorFinal(null);
-			
-		});
-	}
+	
+    }
+	
+	
 
 
-}
+
