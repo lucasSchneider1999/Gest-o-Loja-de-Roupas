@@ -116,21 +116,21 @@ public class ClienteControllerTest {
 		
 	}
 	
-//	@Test
-//	@DisplayName("FINDBYNOME EXCEPTION")
-//	void cenario7() {
-//		
-//		List<Cliente> list = new ArrayList<>();
-//		list.add(new Cliente(1, "joao", "77718239123", 12, "00123899123", null));
-//		list.add(new Cliente(2, "maria", "994920100123", 21, "9011239", null));
-//		
-//		ResponseEntity<List<Cliente>> response = this.clienteController.findByNome("pedro");
-//		//List<Produto> produto = response.getBody();
-//		
-//		assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
-//		//assertEquals(2L, list.get(1).getIdProduto());
-//		//assertEquals(list.get(1), response.getBody());
-//		
-//	}
+	@Test
+	@DisplayName("FINDBYCPF")
+	void cenario7() {
+		
+		List<Cliente> list = new ArrayList<>();
+		list.add(new Cliente(1, "joao", "77718239123", 12, "00123899123", null));
+		list.add(new Cliente(2, "maria", "994920100123", 21, "9011239", null));
+		
+		ResponseEntity<List<Cliente>> response = this.clienteController.findByCpf("77718239123");
+		//List<Produto> produto = response.getBody();
+		
+		assertEquals(HttpStatus.OK, response.getStatusCode());
+		//assertEquals(2L, list.get(1).getIdProduto());
+		//assertEquals(list.get(1), response.getBody());
+		
+	}
 	
 }

@@ -17,6 +17,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import app.entity.Cliente;
 import app.entity.Venda;
 import app.repository.VendaRepository;
 
@@ -43,8 +44,7 @@ public class VendaControllerTest {
 			when(this.vendaRepository.save(venda)).thenReturn(venda);
 			when(this.vendaRepository.findById(1L)).thenReturn(Optional.of(venda));
 			//when(this.vendaRepository.buscarVendasAcimaValor(5));
-			//when(this.vendaRepository.delete(venda)).thenReturn(Optional.of(venda));
-			
+			//when(this.vendaRepository.delete(venda)).thenReturn(Optional.of(venda));	
 			
 		}
 		
@@ -135,6 +135,15 @@ public class VendaControllerTest {
 			assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
 		}
 		
+		@Test
+		@DisplayName("FINDBYID EXCEPTION")
+		void cenario5() {
+			
+			ResponseEntity<Venda> response = this.vendaController.findById(9L);
+			
+			assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+			
+		}
 		
 //		@Test
 //		@DisplayName("Delete")

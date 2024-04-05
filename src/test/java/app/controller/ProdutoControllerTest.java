@@ -129,5 +129,22 @@ public class ProdutoControllerTest {
 		
 	}
 	
+	@Test
+	@DisplayName("FINDBYPRODUTOSACIMAVALOR")
+	void cenario7() {
+		
+		List<Produto> list = new ArrayList<>();
+		list.add(new Produto(1, "bermuda", 1200.99));
+		list.add(new Produto(2, "chapeu", 899.99));
+		
+		ResponseEntity<List<Produto>> response = this.produtoController.buscarProdutosAcimaValor(1000);
+		//List<Produto> produtos = response.getBody();
+		
+		assertEquals(HttpStatus.OK, response.getStatusCode());
+		//assertEquals(1, produtos.get(0).getIdProduto());
+		//assertEquals(list.get(1), response.getBody());
+		
+	}
+	
 	
 }
